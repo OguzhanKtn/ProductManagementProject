@@ -20,28 +20,21 @@
         <div>
             <h2 th:text="${'Search : '+q}"></h2>
         </div>
-        <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">Title</th>
-                <th scope="col">Price</th>
-                <th scope="col">Stock</th>
-                <th scope="col">Image</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="item,iter :${product}">
-                <td>
-                    <a th:href="${'/details/'+item.pid}" th:text="${item.title}"></a>
-                </td>
-                <td th:text="${item.price}"></td>
-                <td th:text="${item.stock}"></td>
-                <td><img th:src="@{${'/getImage/'+ item.pid}}"
-                         class="card img-fluid" style="width:300px" alt=""/></td>
-            </tr>
-
-            </tbody>
-        </table>
+        <div class="row">
+            <th:block th:each="item :${product}">
+                <div class="col-sm-3 mb-3">
+                    <div class="card">
+                        <img th:src="@{${'/getImage/'+ item.pid}}"
+                             class="card img-fluid" style="width:300px" alt=""/>
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${item.title}"></h5>
+                            <p class="card-text" th:text="${Price +': '+ item.price} + ' $'"></p>
+                            <a th:href="${'/details/'+item.pid}" class="btn btn-primary">Details</a>
+                        </div>
+                    </div>
+                </div>
+            </th:block>
+        </div>
         <th:block th:if="${product.getTotalElements() > 10}">
             <ul class="pagination pagination-sm">
                 <th:block th:each="i : ${#numbers.sequence(0,product.getTotalPages()-1)}">

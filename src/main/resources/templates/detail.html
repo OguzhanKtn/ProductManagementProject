@@ -20,10 +20,8 @@
           </tr>
           </thead>
           <tbody>
-              <td>
-                  <img th:src="@{${'/getImage/'+ product.pid}}"
-                       class="card img-fluid" style="width:300px" alt=""/>
-              </td>
+              <td><img th:src="@{${'/getImage/'+ product.pid}}"
+                       class="card img-fluid" style="width:300px" alt=""/></td>
               <td th:text="${product.getShortDetail()}"></td>
               <td th:text="${product.getDetail()}"></td>
           </tr>

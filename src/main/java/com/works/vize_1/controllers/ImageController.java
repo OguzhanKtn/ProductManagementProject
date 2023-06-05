@@ -48,7 +48,7 @@ public class ImageController {
     @GetMapping(value = "/getImage/{pid}", produces = MediaType.IMAGE_JPEG_VALUE)
     public byte[] getImage(@PathVariable Long pid) throws SQLException {
         Blob blob = null;
-        for(ProductImage image : service.all()){
+        for(ProductImage image : service.list()){
             if(image.getPid() == pid){
                 blob = image.getImage();
             }

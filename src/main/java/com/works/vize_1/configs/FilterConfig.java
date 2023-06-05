@@ -1,6 +1,6 @@
 package com.works.vize_1.configs;
 
-import com.works.vize_1.entities.User;
+
 import org.springframework.context.annotation.Configuration;
 
 import javax.servlet.*;
@@ -16,7 +16,7 @@ public class FilterConfig implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         String url = request.getRequestURI();
-        String freeUrls[] = {"/","/login","/search","/details/","/getImage"};
+        String freeUrls[] = {"/","/login","/search","/loginUser","/detail"};
         boolean loginStatus = true;
         for(String item : freeUrls){
             if(url.contains(item)){

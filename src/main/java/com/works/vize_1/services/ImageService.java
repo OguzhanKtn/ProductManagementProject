@@ -33,7 +33,7 @@ public class ImageService {
         return false;
     }
 
-    public List<ProductImage> all(){
+    public List<ProductImage> list(){
         return repository.findAll();
     }
 }
