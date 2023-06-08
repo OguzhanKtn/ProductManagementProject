@@ -26,4 +26,14 @@ public class UserService {
         }
         return null;
     }
+
+    public User single(Long uid){
+        try {
+           return userRepository.findById(uid).get();
+
+        }catch (Exception ex){
+            System.err.println(ex.getMessage());
+        }
+        return null;
+    }
 }

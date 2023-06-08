@@ -17,7 +17,7 @@
         <div class="text-center">Not Found !</div>
     </th:block>
     <th:block th:if="${product.getTotalElements() > 0}">
-        <div>
+        <div class="search">
             <h2 th:text="${'Search : '+q}"></h2>
         </div>
         <div class="row">
@@ -44,7 +44,6 @@
                 </th:block>
             </ul>
         </th:block>
-
     </th:block>
 </div>
 </body>
