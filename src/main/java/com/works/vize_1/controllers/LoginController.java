@@ -36,13 +36,12 @@ public class LoginController {
         User u = service.userLogin(user);
         if(u != null){
             request.getSession().setAttribute("user",""+u.getUid());
-            if(user.getRemember() != null && user.getRemember().equals("on")){
-                String chipherText = tinkEncDec.encrypt(""+u.getUid());
-                Cookie cookie = new Cookie("user",chipherText);
-                cookie.setMaxAge(60 * 60);
-                response.addCookie(cookie);
-            }
-
+                if(user.getRemember() != null && user.getRemember().equals("on")){
+                    String chipherText = tinkEncDec.encrypt(""+u.getUid());
+                    Cookie cookie = new Cookie("user",chipherText);
+                    cookie.setMaxAge(60 * 60);
+                    response.addCookie(cookie);
+                }
             return "redirect:/dashboard";
         }
         status = 1;
@@ -52,6 +51,9 @@ public class LoginController {
     @GetMapping("/logout")
     public String logout(){
         request.getSession().removeAttribute("user");
+        Cookie cookie = new Cookie("user","");
+        cookie.setMaxAge(0);
+        response.addCookie(cookie);
         return "redirect:/";
     }
 }

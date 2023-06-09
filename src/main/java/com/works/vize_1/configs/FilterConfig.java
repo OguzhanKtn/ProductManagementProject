@@ -42,6 +42,7 @@ public class FilterConfig implements Filter {
                        String plainText = tinkEncDec.decrypt(cookie.getValue());
                        Long val = Long.parseLong(plainText);
                        User u = service.single(val);
+                       System.out.println(u);
                        if(u != null){
                            request.getSession().setAttribute("user",u);
                            break;
@@ -53,7 +54,9 @@ public class FilterConfig implements Filter {
            if(status){
                response.sendRedirect("/login");
            }else{
-
+               User user  = (User) request.getSession().getAttribute("user");
+               System.out.println(user);
+               request.setAttribute("user",user);
                filterChain.doFilter(request,response);
            }
        }else{
